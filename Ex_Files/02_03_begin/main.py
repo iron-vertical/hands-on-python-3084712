@@ -16,5 +16,3 @@ print(max(AGES))
 print(JOHN_PAUL)
 print(GEORGE_RINGO)
 print(REVERSE)
-
-print("test")
