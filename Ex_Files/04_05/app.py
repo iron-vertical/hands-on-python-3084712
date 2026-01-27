@@ -23,13 +23,17 @@ def laureate_list():
         return jsonify(results)
 
     search_string = request.args.get("flName").lower().strip()
+    search_terms = [term for term in search_string.split() if term]
 
     # tip: remember that laureate["name"] contains a first name
     for laureate in laureates:
         surname = laureate["surname"].lower()
         first_name = laureate['name'].lower()
         # your code here
-        if (search_string in surname) or (search_string in first_name):
+        if not search_terms:
+            continue
+
+        if any(term in surname or term in first_name for term in search_terms):
             results.append(laureate)
 
     return jsonify(results)
