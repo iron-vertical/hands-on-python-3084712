@@ -95,7 +95,7 @@
             if (searchInput.length < 2) {
                 return
             }
-            fetch('/laureates/?flName=' + e.target.value)
+            fetch('/laureates/?flName=' + encodeURIComponent(e.target.value))
                 .then(res => res.json())
                 .then(data => {
                     results.innerHTML = '';
